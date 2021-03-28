@@ -15,11 +15,6 @@
 				footerClass="table-footer" rowClasses="table-odd-row,table-even-row">
 
 				<h:column>
-					<h:commandLink value="Edit"
-						action="#{backingEmployees.edit(employee)}" />
-				</h:column>
-
-				<h:column>
 					<!-- column header -->
 					<f:facet name="header">Id</f:facet>
 					<!-- row record -->
@@ -52,10 +47,15 @@
 						<f:convertNumber currencySymbol="$" type="currency" />
 					</h:outputText>
 				</h:column>
+				
+				<h:column>
+					<h:commandLink value="Edit"
+						action="#{backingEmployees.edit(employee)}" />
+				</h:column>
 
 				<h:column>
 					<h:commandLink value="Delete"
-						action="#{backingEmployees.delete(employee)}" />
+						action="#{backingEmployees.delete(employee.id)}" />
 				</h:column>
 
 				<f:facet name="footer">

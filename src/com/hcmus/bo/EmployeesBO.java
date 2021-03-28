@@ -56,4 +56,33 @@ public class EmployeesBO {
 			e.printStackTrace();
 		}
 	}
+	
+	public void updateEmployee(Employee empl) {
+		String sql = "update employees set first_name = ?, last_name = ?, company = ?, empl_number = ?, salary = ? where id = ?";
+		try {
+			Connection con = DBConnectionUtil.openConnection();
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setString(1, empl.getFirstName());
+			ps.setString(2, empl.getLastName());
+			ps.setString(3, empl.getCompany());
+			ps.setString(4, empl.getEmplNumber());
+			ps.setDouble(5, empl.getSalary());
+			ps.setInt(6, empl.getId());
+			ps.execute();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void deleteEmployee(int id) {
+		String sql = "delete from employees where id = ?";
+		try {
+			Connection con = DBConnectionUtil.openConnection();
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, id);
+			ps.execute();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+	}
 }
